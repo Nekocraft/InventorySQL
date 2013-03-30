@@ -7,7 +7,7 @@ mirror-mode: false
 use-permissions: false
 gamemode:
   - SURVIVAL
-  - CREATIVE
+#  - CREATIVE
   - ADVENTURE
 mysql:
   host: localhost:3306
@@ -20,15 +20,15 @@ backup:
   enabled: true
   cleanup-days: 5
 messages:
-  no-modif: 'No modifications'
-  modif: '%s items added, %s items removed of %s items'
-  no-online: 'None of these players were online..'
-  check-n-players: 'Checking %s player(s)'
-  check-all-players: 'Checking all players...'
-  check-yourself: 'Checking yourself...'
-  mirror-wait: 'Hello %s ! Wait a little, your inventory is loading..'
-  mirror-latest: 'Your inventory is ready !'
-  mirror-done: 'Your inventory has been loaded !'
+  no-modif: '你什么变化都没发现'
+  modif: '增加了 %s 物品, %s 物品从 %s 中移除'
+  no-online: '没有玩家在线..'
+  check-n-players: '检查 %s player(s)'
+  check-all-players: '检查 all players...'
+  check-yourself: '检查 yourself...'
+  mirror-wait: '等等 %s，系统正在准备你的装备..'
+  mirror-latest: '检查好装备了 !'
+  mirror-done: '信息同步完毕'
 update-events:
   join: true
   quit: true
