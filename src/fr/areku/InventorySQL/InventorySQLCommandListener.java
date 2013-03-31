@@ -15,14 +15,14 @@ public class InventorySQLCommandListener implements CommandExecutor {
 			String[] args) {
 		if (!InventorySQL.getInstance().ready) {
 			cs.sendMessage("[InventorySQL] " + ChatColor.RED
-					+ "Error in config, please check and use /invsql reload");
+					+ "配置加载失败请用/inv reload 重新加载");
 			return true;
 		}
 
 		if ("ichk".equals(label)) {
 			return new Commandichk(cs, cmnd, label, args, this).execute();
 		}
-		if ("invsql".equals(label)) {
+		if ("inv".equals(label)) {
 			return new Commandinvsql(cs, cmnd, label, args, this).execute();
 			
 		}

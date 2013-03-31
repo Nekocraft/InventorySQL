@@ -3,18 +3,18 @@ main: fr.areku.InventorySQL.InventorySQL
 author: ThisIsAreku
 website: http://areku.fr/
 version: 2.5.4
-description: Sync your inventory on MySQL
+description: 物品数据化储存
 softdepend: [Authenticator, Vault]
 commands:
     invSQL:
-        description: InventorySQL - Main command
-        usage: /invSQL help
+        description: InventorySQL - 主要指令
+        usage: /inv help
     ichk:
-        description: InventorySQL - Check my inventory now !
+        description: InventorySQL - 检查物品栏
         usage: /ichk
 permissions:
   invsql.*:
-    description: 'Give access to all commands'
+    description: '全部权限'
     children:
       invsql.check.me: true
       invsql.check.others: true
@@ -22,27 +22,27 @@ permissions:
       invsql.pw: true
       invsql.reload: true
   invsql.pw:
-    description: 'Let you change you password'
+    description: '能改变密码'
     default: true
   invsql.reload:
-    description: 'Let you reload the plugin'
+    description: '能重新加载插件'
     default: op
   invsql.check:
-    description: 'Give access to all check related commands'
+    description: '能检查所有的仓库'
     children:
       invsql.check.me: true
       invsql.check.others: true
   invsql.check.me:
-    description: 'Let you check yourself'
+    description: '能检查自己的仓库'
     default: true
   invsql.check.others:
-    description: 'Let you check other players'
+    description: '能检查别人的仓库'
     default: op
     children:
       invsql.check.me: true
   invsql.debug:
-    description: 'Access to /invsql debug'
+    description: '能使用 /inv debug'
     default: op
   invsql.hidemessages:
-    description: 'Hide messages from InventorySQL'
+    description: '隐藏所有提示信息'
     default: false

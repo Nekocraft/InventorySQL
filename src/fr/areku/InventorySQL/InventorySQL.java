@@ -18,7 +18,6 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.areku.InventorySQL.database.CoreSQL;
-import fr.areku.commons.UpdateChecker;
 
 public class InventorySQL extends JavaPlugin {
 	private static InventorySQL instance;
@@ -117,12 +116,8 @@ public class InventorySQL extends JavaPlugin {
 		new UpdateEventListener();
 
 		this.commandListener = new InventorySQLCommandListener();
-		this.getCommand("invSQL").setExecutor(commandListener);
+		this.getCommand("inv").setExecutor(commandListener);
 		this.getCommand("ichk").setExecutor(commandListener);
-
-		startMetrics();
-		if (Config.check_plugin_updates)
-			startUpdate();
 
 		reload();
 
@@ -141,7 +136,7 @@ public class InventorySQL extends JavaPlugin {
 
 				UpdateEventListener.registerOfflineModeSupport();
 				InventorySQL
-						.log("Using Authenticator for offline-mode support");
+						.log("使用Authenticator来使用离线模式");
 			}
 		}
 	}
@@ -158,29 +153,7 @@ public class InventorySQL extends JavaPlugin {
 		perm = rsp.getProvider();
 		vaultPlugin = (perm != null);
 		if (vaultPlugin)
-			InventorySQL.log("You have Vault ? oh great, so I'll use it");
-	}
-
-	private void startMetrics() {
-
-		try {
-			log("Starting Metrics");
-			MetricsLite metrics = new MetricsLite(this);
-			metrics.start();
-		} catch (IOException e) {
-			log("Cannot start Metrics...");
-		}
-	}
-
-	private void startUpdate() {
-		try {
-			UpdateChecker update = new UpdateChecker(this);
-			update.start();
-		} catch (MalformedURLException e) {
-			d("Cannot start Plugin Updater...");
-			d(e.getMessage());
-			// log("Cannot start Plugin Updater...");
-		}
+			InventorySQL.log("检测到Vault,加载到InventorySQL");
 	}
 
 	public void Disable() {
@@ -191,7 +164,7 @@ public class InventorySQL extends JavaPlugin {
 		try {
 			Config.reloadConfig();
 		} catch (Exception e) {
-			logException(e, "Unable to load config");
+			logException(e, "加载配置失败");
 			this.Disable();
 			return;
 		}
@@ -199,7 +172,7 @@ public class InventorySQL extends JavaPlugin {
 		try {
 			CoreSQL.getInstance().reload();
 		} catch (ClassNotFoundException e) {
-			log(Level.SEVERE, "Cannot found MySQL Class !");
+			log(Level.SEVERE, "找不到mysql的类 !");
 			this.Disable();
 			return;
 		}
