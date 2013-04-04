@@ -16,6 +16,10 @@
 
   <repositories>
     <repository>
+      <id>nekorepo</id>
+      <url>http://repo.nekocraft.com/</url>
+    </repository>
+    <repository>
       <id>bukkit-repo</id>
       <url>http://repo.bukkit.org/content/groups/public/</url>
     </repository>
