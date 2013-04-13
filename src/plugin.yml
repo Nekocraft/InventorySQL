@@ -6,7 +6,7 @@ version: 2.5.4
 description: 物品数据化储存
 softdepend: [Authenticator, Vault]
 commands:
-    invSQL:
+    inv:
         description: InventorySQL - 主要指令
         usage: /inv help
     ichk:
